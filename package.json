@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "start:dev": "cross-env ENV=development node ./bin/www",
+    "start:prod": "cross-env ENV=production node ./bin/www",
+    "start:test": "cross-env ENV=test node ./bin/www"
   },
   "dependencies": {
     "aws-sdk": "^2.1202.0",
@@ -17,5 +20,8 @@
     "iconv-lite": "^0.6.3",
     "morgan": "~1.9.1",
     "nodemon": "^3.1.4"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
   }
 }

@@ -2,13 +2,14 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-require('dotenv').config();
+const config = require('./config/config');
 
 var indexRouter = require('./app/routes/index');
 var usersRouter = require('./app/routes/users');
 
-var app = express();
+const app = express();
 
+// app.set('port', config.port);
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -17,11 +18,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+console.log(config.mode);
 
-const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+app.listen(app.get('port'), () => {
+    console.log(`Server is running on port ${app.get('port')}`);
 })
 
 
