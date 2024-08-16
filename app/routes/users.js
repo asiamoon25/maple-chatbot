@@ -14,8 +14,11 @@ get user ocid
 router.get('/:id/ocid',(req,res) => {
 
   const userId = req.params.id;
-
+  console.log(userId);
   const ocid = userService.getOcidByUserId(userId);
+  console.log("user route ocid : " + ocid);
+
+  res.status(200);
 
 });
 
